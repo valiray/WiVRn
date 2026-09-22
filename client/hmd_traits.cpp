@@ -147,6 +147,7 @@ void hmd_traits::init()
 	initialized_ = true;
 #endif
 #ifdef __ANDROID__
+	tongue_tracking = get_property("debug.xr.face_tracking.tongue").value_or("") == "1";
 	const auto device = get_property("ro.product.device");
 	const auto manufacturer = get_property("ro.product.manufacturer");
 	const auto model = get_property("ro.product.model");

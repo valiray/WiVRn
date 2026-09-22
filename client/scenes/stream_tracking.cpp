@@ -285,7 +285,8 @@ void scenes::stream::tracking()
 	std::optional<xr::hand_tracker> left_hand;
 	std::optional<xr::hand_tracker> right_hand;
 
-	const bool face_tracking = config.check_feature(feature::face_tracking);
+	// Tongue tracking requires face polling even when generic face tracking is disabled.
+	const bool face_tracking = config.check_feature(feature::face_tracking) || application::get_hmd_traits().tongue_tracking;
 	xr::face_tracker face_tracker;
 
 	const bool body_tracking = config.check_feature(feature::body_tracking);

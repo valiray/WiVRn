@@ -277,7 +277,7 @@ std::shared_ptr<scenes::stream> scenes::stream::create(std::unique_ptr<wivrn_ses
 			info.user_presence = self->system.user_presence_properties().supportsUserPresence;
 		}
 
-		if (config.check_feature(feature::face_tracking))
+		if (config.check_feature(feature::face_tracking) || application::get_hmd_traits().tongue_tracking)
 		{
 			switch (self->system.face_tracker_supported())
 			{
